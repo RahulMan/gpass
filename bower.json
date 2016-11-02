@@ -1,0 +1,55 @@
+{
+  "name": "GPass",
+  "version": "0.0.0",
+  "description": "A Web application for testing graphical passwords",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "patient",
+    "sql",
+    "express",
+    "nodejs",
+    "angular"
+  ],
+  "authors": "FCS Team",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.5",
+    "angular-ui-router": "~0.2.18",
+    "angular-mocks": "~1.5.5",
+    "angular-resource": "~1.5.5",
+    "angular-route": "~1.5.5",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "fontawesome#~4.6.1",
+    "ng-dialog": "~0.6.0",
+    "angular-bootstrap": "^1.3.3",
+    "validator-js": "^5.4.0",
+    "angular-material": "^1.0.9",
+    "angular-messages": "^1.5.7",
+    "angular-cookies": "^1.5.7"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "~1.5.5"
+  }
+}

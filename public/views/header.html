@@ -1,0 +1,54 @@
+<style type="text/css">
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+</style>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show="loggedIn" ng-cloak>
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="app"><img src="images/logo1.png" height=30 width=41></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ng-class="{active: stateis('app.home')}"><a ui-sref="app">
+                    <span class="glyphicon glyphicon-home"
+                    aria-hidden="true"></span> Home</a>
+                </li>
+            <ul class="nav navbar-nav navbar-right">
+				<li uib-dropdown on-toggle="toggled(open)">
+                    <a style="cursor: pointer; display: block;" class="simple-dropdown" uib-dropdown-toggle>
+                         {{username}}
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu  aria-labelledby="simple-dropdown">
+                        <li>
+                            <a ng-click="logout()" style="cursor: pointer; display: block;">LogOut</a>
+
+                        </li>
+                    </ul>
+                </li>
+				
+				
+
+            </ul>
+        </div>
+    </div>
+</nav>         
+
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    $(this).parent('li').siblings('li').children('ul').hide();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+
+</script>
