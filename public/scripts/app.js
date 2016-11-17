@@ -16,7 +16,21 @@ angular.module('App', ['ui.router','ngResource','ngDialog','ui.bootstrap','ngMat
                     },
                     'footer': {
                         templateUrl : 'views/footer.html',
-                        controller : 'FooterController'
+                        //controller : 'FooterController'
+                    }
+                }
+
+            })
+			.state('app.home', {
+                url:'home',
+                views: {
+					'header': {
+                        templateUrl : 'views/header.html',
+                        controller : 'HeaderController'
+                    },
+                    'content@': {
+                        templateUrl : 'views/home.html',
+                       // controller: 'HeaderController'           
                     }
                 }
 
@@ -43,16 +57,7 @@ angular.module('App', ['ui.router','ngResource','ngDialog','ui.bootstrap','ngMat
 
             })
 
-            .state('app.home', {
-                url:'home',
-                views: {
-                    'content@': {
-                        templateUrl : 'views/home.html',
-                        controller: 'DashBoardController'           
-                    }
-                }
-
-            })
+            
 
             ;
             $urlRouterProvider.otherwise('/');

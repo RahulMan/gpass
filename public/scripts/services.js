@@ -45,19 +45,55 @@ angular.module('App')
         );
     }
 
-  this.doAuth = function(username,password,rememberme,next){
+  this.doAuth = function(username,password,color,next){
         $http({
             method: 'POST',
             url: baseURL+'users/login',
-            data: {username: username, password: password, rememberme: rememberme}
+            data: {username: username, password: password, color: color}
           }).then(function successCallback(response) {
                 if(response.status==200){
                        logged_in_user=username;
                        logged_in=true;
-                       console.log('successful login in services :'+logged_in);
+                       console.log('successful login in services :'+logged_in+'::::' + logged_in_user);
+					   
                        users.get({username: username})
                         .$promise.then(function(user){
                             logged_in_user_object=user;
+				console.log('logged in ooobject saved :'+logged_in+'::::' + logged_in_user);
+
+                          next(user);
+                          },function(response){
+                            console.log("Error" + response.status +" " + response.statusText);
+                            next(null);
+                          }
+                        );
+                       
+                }
+                else
+                 {
+                    //alert('login failed services');
+                    next(null);
+                 }
+            }, function errorCallback(response) {
+                  {
+                    //alert('login failed services');
+                    next(null);
+                 }
+            });
+    };
+	this.doRegister = function(username,password,color,next){
+        $http({
+            method: 'POST',
+            url: baseURL+'users/register',
+            data: {username: username, password: password, color: color}
+          }).then(function successCallback(response) {
+                if(response.status==200){
+                       logged_in_user=username;
+                       logged_in=true;
+                       console.log('successful register in services :'+logged_in);
+                       users.get({username: username})
+                        .$promise.then(function(user){
+                           logged_in_user_object=user;
                           next(user);
                           },function(response){
                             console.log("Error" + response.status +" " + response.statusText);
@@ -89,7 +125,7 @@ angular.module('App')
     }
 
     this.isLoggedIn = function(){
-        console.log("Logged in: "+logged_in+" "+logged_in_centre);
+        console.log("Logged in: "+logged_in);
         return logged_in;
     };
     this.logout = function(){
@@ -102,6 +138,7 @@ angular.module('App')
             if(response.status==200){
                 logged_in_user='';
                 logged_in=false;
+				console.log('logged in flag in logout = '+logged_in);
             }
             else
             {
