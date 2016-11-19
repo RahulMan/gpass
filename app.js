@@ -19,12 +19,12 @@ var apiRouter = require('./app/routes/api');
 
 var app = express();
 
-// app.all('*', function(req, res, next){
-//   if(req.secure){
-//     return next();
-//   }
-//   res.redirect('https://'+ req.hostname+":"+app.get('secPort')+req.url);
-// });
+app.all('*', function(req, res, next){
+  if(req.secure){
+    return next();
+  }
+  res.redirect('https://'+ req.hostname+":"+app.get('secPort')+req.url);
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

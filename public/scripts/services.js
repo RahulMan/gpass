@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('App')
-.constant("baseURL","http://localhost:3000/api/")
+.constant("baseURL","https://localhost:3443/api/")
 .factory('$localStorage', ['$window', function ($window) {
     return {
         store: function (key, value) {
