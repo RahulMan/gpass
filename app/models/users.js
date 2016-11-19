@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
           },
           color: {
-            type: DataTypes.STRING
+            type: DataTypes.INTEGER
           }
   }, {
     tableName: 'users'

@@ -23,15 +23,22 @@ Hello
 						aria-hidden="true"></span>Home</a>
                 </li>
 			</ul>
-			<ul class="nav navbar-nav">
-                <li ng-class="{active: stateis('app.home')}">
+			<ul class="nav navbar-nav" ng-show="!loggedIn">
+                <li ng-class="{active: stateis('app.login')}">
 					<a ui-sref="app.login">
 						<span class="glyphicon glyphicon-home"
 						aria-hidden="true"></span>Login</a>
                 </li>
 			</ul>
-			<ul class="nav navbar-nav">
-                <li ng-class="{active: stateis('app.home')}">
+            <ul class="nav navbar-nav" ng-show="!loggedIn">
+                <li ng-class="{active: stateis('app.glogin')}">
+                    <a ui-sref="app.glogin">
+                        <span class="glyphicon glyphicon-home"
+                        aria-hidden="true"></span>GLogin</a>
+                </li>
+            </ul>
+			<ul class="nav navbar-nav" ng-show="!loggedIn">
+                <li ng-class="{active: stateis('app.register')}">
 					<a ui-sref="app.register">
 						<span class="glyphicon glyphicon-home"
 						aria-hidden="true"></span>Register</a>
@@ -39,7 +46,7 @@ Hello
 			</ul>
 			
 			<ul class="nav navbar-nav">
-                <li ng-class="{active: stateis('app.home')}">
+                <li ng-class="{active: stateis('app.home')}" ng-show="loggedIn">
 					<a ng-click="doLogout()" style="cursor: pointer; display: block;>
 						<span class="glyphicon glyphicon-home"
 						aria-hidden="true"></span>LogOut</a>

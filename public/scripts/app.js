@@ -46,6 +46,17 @@ angular.module('App', ['ui.router','ngResource','ngDialog','ui.bootstrap','ngMat
 
             })
 
+            .state('app.glogin', {
+                url:'glogin/',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/glogin.html',
+                        controller  : 'GLoginController'        
+                    }
+                }
+
+            })
+
             .state('app.register', {
                 url:'register/',
                 views: {

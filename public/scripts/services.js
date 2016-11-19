@@ -81,6 +81,9 @@ angular.module('App')
                  }
             });
     };
+    this.getBaseURL = function(){
+        return baseURL;
+    }
 	this.doRegister = function(username,password,color,next){
         $http({
             method: 'POST',
@@ -128,6 +131,10 @@ angular.module('App')
         console.log("Logged in: "+logged_in);
         return logged_in;
     };
+    this.setLogged_in_user = function (username){
+        logged_in = true;
+        logged_in_user = username;
+    }
     this.logout = function(){
         logged_in=false;
         logged_in_user='';

@@ -10,7 +10,7 @@ exports.login = function(req, res){
 				console.log('No user with that username');	
 			}
 			else{
-				var hashedPassword = crypto.createHash('md5').update(req.body.password).digest("hex");
+				var hashedPassword = req.body.password;
 				if(user.hashedPassword == hashedPassword){
 					if(req.body.rememberme == true){
 						res.cookie('username',req.body.username,{signed: true, maxAge: 360000000});
@@ -53,17 +53,18 @@ exports.logout = function(req, res){
 }
 exports.register = function(req, res){
 	if(req.body.username!=null && req.body.password!=null)
-	console.log("registering for "+req.body.username+" "+crypto.createHash('md5').update(req.body.password).digest("hex"));
+		console.log("registering for "+req.body.username+" "+req.body.password);
 	if(req.body.username !=null && req.body.password !=null)
 	{
 		users.findOne({where: {username: req.body.username}}).then(function(user){
 			if(user !=null){
-				res.end('Username already exists');
 				res.status(400);
+				res.end('Username already exists');
+				
 			}
 			else
 			{
-				users.create({username: req.body.username, hashedPassword: crypto.createHash('md5').update(req.body.password).digest("hex"), color: req.body.color});
+				users.create({username: req.body.username, hashedPassword: req.body.password, color: req.body.color});
 				res.status(200);
 				res.end('Successfully added: '+req.body.username);
 			}
