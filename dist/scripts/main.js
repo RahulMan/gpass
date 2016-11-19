@@ -766,6 +766,8 @@ angular.module('App')
                                 }, function errorCallback(response) {
                                       {
                                         alert('Incorrect password');
+                                        $state.go('app.home', {}, {reload: true});
+                                        
                                      }
                                 });
                             return;
